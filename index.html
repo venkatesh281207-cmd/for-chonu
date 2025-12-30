@@ -118,6 +118,7 @@
         .caption-text { font-family: 'Montserrat', sans-serif; color: #222; font-size: 0.85rem; margin-top: 15px; font-weight: 500; text-align: center; pointer-events: none;}
         .photo-badge { position: absolute; bottom: 10px; right: 12px; background: var(--accent-gold); color: #333; padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; }
 
+        /* Lightbox for enlarging images */
         #lightbox {
             display: none;
             position: fixed;
@@ -127,12 +128,11 @@
             backdrop-filter: blur(15px);
             justify-content: center;
             align-items: center;
+            cursor: pointer;
         }
-        #lightbox img { max-width: 90%; max-height: 80%; border: 6px solid #fff; border-radius: 4px; }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 6px solid #fff; border-radius: 4px; box-shadow: 0 0 30px rgba(245, 199, 122, 0.2); }
 
         .footer { padding: 60px 20px; color: #555561; text-align: center; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; }
-        
-        /* Audio Player Styling */
         #musicPlayer { display: none; }
     </style>
 </head>
@@ -173,8 +173,11 @@
         <div class="footer">Made with love by Bade Bhaiya SUIII</div>
     </div>
 
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="enlargedImg" src="">
+    </div>
+
     <script>
-        // Captions mapping
         const captions = {
             1: "What an DIVAAAA 👁️🫦👁️💅", 2: "Sadi huyi smile pt. 1😑", 3: "Fav Ship 🫶🏻",
             4: "Khair 🥀", 5: "Maa aur uska naujawan Bachelor ladka 😍", 6: "Mog kardiya bc 🗿 🤫🧏‍♂️",
@@ -195,8 +198,7 @@
         const music = document.getElementById('musicPlayer');
 
         trigger.onclick = function() {
-            // Play Music
-            music.volume = 0.5; // Set volume to 50%
+            music.volume = 0.5;
             music.play().catch(e => console.log("Music play blocked:", e));
 
             document.getElementById('candle').style.display = 'none';
@@ -204,7 +206,6 @@
             document.getElementById('secret-content').style.display = 'flex';
 
             if (slider.children.length === 0) {
-                // Triple load for loop
                 for (let i = 1; i <= 30; i++) createCard(i); 
                 for (let i = 1; i <= 30; i++) createCard(i); 
                 for (let i = 1; i <= 30; i++) createCard(i); 
