@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>for chonu 💛</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Patrick+Hand&family=Poppins:wght@300;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight-bg: #0f0f14;
+            --primary-gold: #f5c77a;
+            --secondary-grey: #c9c9d1;
+            --accent-gold: #ffd166;
+            --glass-gold: rgba(245, 199, 122, 0.05);
+            --glass-border: rgba(245, 199, 122, 0.15);
+        }
+
+        body {
+            background-color: var(--midnight-bg);
+            color: var(--secondary-grey);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #181822 0%, var(--midnight-bg) 100%);
+        }
+
+        h1 { font-family: 'Caveat', cursive; font-size: clamp(3rem, 10vw, 4.5rem); color: var(--primary-gold); margin: 0; }
+        .aunty-line { font-family: 'Patrick Hand', cursive; font-size: 1.5rem; color: var(--secondary-grey); opacity: 0.8; margin-top: -5px; }
+        .sub { font-family: 'Patrick Hand', cursive; font-size: 1.4rem; color: var(--accent-gold); margin-top: 15px; }
+
+        .cake-wrapper {
+            position: relative;
+            cursor: pointer;
+            margin: 30px 0;
+            padding: 20px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cake-emoji { font-size: 100px; filter: drop-shadow(0 0 20px rgba(255, 209, 102, 0.25)); }
+        .flame {
+            position: absolute;
+            top: -10px; left: 50%; transform: translateX(-50%);
+            font-size: 40px; animation: flicker 0.6s infinite alternate;
+        }
+
+        @keyframes flicker { from { opacity: 0.7; } to { opacity: 1; } }
+
+        #secret-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        #letter {
+            max-width: 600px;
+            background: var(--glass-gold);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 40px 25px;
+            border-radius: 30px;
+            text-align: center;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin: 40px 20px;
+        }
+
+        .gallery-header { text-align: center; margin: 60px 0 10px 0; }
+        .gallery-header h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2rem; color: var(--primary-gold); margin: 0; }
+        .divider { width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto; }
+
+        .slider-container { 
+            width: 100vw; 
+            margin-bottom: 60px;
+            overflow: hidden; 
+            position: relative;
+        }
+        
+        .gallery-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: auto;
+        }
+        .gallery-slider::-webkit-scrollbar { display: none; }
+
+        .polaroid-card {
+            flex: 0 0 280px;
+            background: #fdfdfd;
+            padding: 12px 12px 40px 12px;
+            border-radius: 4px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            position: relative;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .polaroid-card img { width: 100%; height: 280px; object-fit: cover; border-radius: 2px; }
+        .caption-text { font-family: 'Montserrat', sans-serif; color: #222; font-size: 0.85rem; margin-top: 15px; font-weight: 500; text-align: center; pointer-events: none;}
+        .photo-badge { position: absolute; bottom: 10px; right: 12px; background: var(--accent-gold); color: #333; padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 15, 0.98);
+            backdrop-filter: blur(15px);
+            justify-content: center;
+            align-items: center;
+        }
+        #lightbox img { max-width: 90%; max-height: 80%; border: 6px solid #fff; border-radius: 4px; }
+
+        .footer { padding: 60px 20px; color: #555561; text-align: center; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>HAPPY BIRTHDAY AAISHA!!💛</h1>
+        <div class="aunty-line">becoming a proper AUNTY day by day</div>
+        <p class="sub" id="hint">Make a wish, then blow the candle ✨</p>
+        <div class="cake-wrapper" id="cakeTrigger">
+            <div id="candle" class="flame">🔥</div>
+            <div class="cake-emoji">🎂</div>
+        </div>
+    </div>
+
+    <div id="secret-content">
+        <div id="letter">
+            <p>May every dream you’re scared to say out loud still find its way to you 💛</p>
+            <p>Stay smiling. Stay bakchod. Stay exactly the way you are.</p>
+            <p>Life’s gonna try you, slow you down, confuse you — but remember, you’re built different.</p>
+            <p>Stay Goated 🐐 Trust your path. Trust your timing but at the same time always listen to ur elders(me, cz mere instincts goated hote hai)!</p>
+            <p>ik i have never appreciated enough but forever grateful to have u as my friend, n ik not a great gift, but thats all i could do future mai fs isse accha birthday wish/gift, never forgetting gpt ka wish obv.</p>
+            <p style="color: var(--primary-gold); font-weight: bold; font-size: 1.2rem; margin-top: 25px;">From a nalla BASTARRDD — ALWAYS by your side, ALWAYS proud of you 💫</p>
+        </div>
+
+        <div class="gallery-header">
+            <h2>The Memory Vault</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="slider-container">
+            <div class="gallery-slider" id="gallery"></div>
+        </div>
+        <div class="footer">Made with love by Bade Bhaiya SUIII</div>
+    </div>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="enlargedImg" src="">
+    </div>
+
+    <script>
+        const captions = {
+            1: "What an DIVAAAA 👁️🫦👁️💅", 2: "Sadi huyi smile pt. 1😑", 3: "Fav Ship 🫶🏻",
+            4: "Khair 🥀", 5: "Maa aur uska naujawan Bachelor ladka 😍", 6: "Mog kardiya bc 🗿 🤫🧏‍♂️",
+            7: "FAVVV PIC BUT OBVIO 🐐, n btw it was the 7/30th pic", 8: "Walk faster maybe",
+            9: "SIR RUMMM???!!!🥴🍾", 10: "GOATED Nibbi Couples bhaiiiiii 😼",
+            11: "Bakchodi aside — texts like this hit different.",
+            12: "NICE 👍", 13: "Missing our 26th Jan ka Trio🫶🏻🥹❤️‍🩹", 14: "Sadi huyi smile pt. 2😑",
+            15: "Nice smile finally 😑", 16: "Bewdiii Aisha pt.2... what is that blush or contour or wtv bhaiii😭😭",
+            17: "No need for caption 😭😭", 18: "WHAT EVEN IS THIS 😭", 19: "Only good pic of apna",
+            20: "dk kuch nhi tha toh daldiya", 21: "fav choti aaisha pic 🎀", 22: "missing garba nights 🫶🏻🥹",
+            23: "kya reason tha iss selfie ka???", 24: "eyeHAWWWWWW😱😱😱😱", 25: "ek din fs hojayegi dw 😎",
+            26: "Same to u 🖕", 27: "YESSS SRLY??🤣🤣", 28: "UMM NO????🤢", 29: "wowowowow",
+            30: "PAPA KI PARI 💛"
+        };
+
+        const trigger = document.getElementById('cakeTrigger');
+        const slider = document.getElementById('gallery');
+
+        trigger.onclick = function() {
+            document.getElementById('candle').style.display = 'none';
+            document.getElementById('hint').innerText = "Wish Granted! ✨ and now its mine hehehe😼😼";
+            document.getElementById('secret-content').style.display = 'flex';
+
+            if (slider.children.length === 0) {
+                // Generate 3 sets of 30 cards to create a massive "infinite" track
+                // Set 1 (clones for scrolling backwards)
+                for (let i = 1; i <= 30; i++) createCard(i); 
+                // Set 2 (The REAL center set)
+                for (let i = 1; i <= 30; i++) createCard(i); 
+                // Set 3 (clones for scrolling forwards)
+                for (let i = 1; i <= 30; i++) createCard(i); 
+
+                // Start her in the exact middle of the second set
+                setTimeout(() => {
+                    const totalWidth = slider.scrollWidth;
+                    slider.scrollLeft = totalWidth / 3;
+                }, 50);
+            }
+
+            setTimeout(() => {
+                document.getElementById('letter').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 400);
+
+            createConfetti();
+        };
+
+        function createCard(i) {
+            const card = document.createElement('div');
+            card.className = 'polaroid-card';
+            card.style.transform = `rotate(${Math.floor(Math.random() * 6) - 3}deg)`;
+            const imgPath = `pic${i}.jpg`;
+            card.innerHTML = `
+                <img src="${imgPath}" onerror="this.src='https://via.placeholder.com/300x300?text=Pic+${i}'">
+                <div class="caption-text">${captions[i] || "Memory ❤️"}</div>
+                <div class="photo-badge">${i} / 30</div>
+            `;
+            card.onclick = () => {
+                document.getElementById('enlargedImg').src = imgPath;
+                document.getElementById('lightbox').style.display = 'flex';
+            };
+            slider.appendChild(card);
+        }
+
+        // Seamless Percentage Jump
+        slider.addEventListener('scroll', () => {
+            const currentScroll = slider.scrollLeft;
+            const maxScroll = slider.scrollWidth;
+            const viewportWidth = slider.offsetWidth;
+
+            // If she scrolls into the first 10% or last 10%, jump her back to the center set
+            if (currentScroll < (maxScroll / 10)) {
+                slider.scrollLeft = currentScroll + (maxScroll / 3);
+            } else if (currentScroll + viewportWidth > (maxScroll * 0.9)) {
+                slider.scrollLeft = currentScroll - (maxScroll / 3);
+            }
+        });
+
+        function createConfetti() {
+            const colors = ['#f5c77a', '#ffd166', '#ffffff'];
+            for(let i=0; i<80; i++) {
+                const c = document.createElement('div');
+                c.style.width = '8px'; c.style.height = '8px';
+                c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                c.style.position = 'fixed';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.top = '-10px';
+                c.style.borderRadius = '50%';
+                c.style.zIndex = '10000';
+                document.body.appendChild(c);
+                c.animate([{ transform: 'translateY(0)', opacity: 1 }, { transform: `translateY(100vh) rotate(360deg)`, opacity: 0 }], 
+                { duration: Math.random() * 3000 + 2000 }).onfinish = () => c.remove();
+            }
+        }
+    </script>
+</body>
+</html>
